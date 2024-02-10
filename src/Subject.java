@@ -39,17 +39,14 @@ public class Subject {
             return true;
         return false;
     }
-    public static void check(int id)
+    public static void check(Subject subject,int id)
     {
-        for(int i=0;i<subjects.size();i++)
-        {
-            if(is_SubjectID_Available(subjects.get(i),id))
+            if(is_SubjectID_Available(subject,id))
             {
-                System.out.print(" Subject ID: ".concat(subjects.get(i).subID+""));
-                System.out.println(" subject Name: ".concat(subjects.get(i).subName));
+                System.out.print(" Subject ID: ".concat(subject.getSubID()+""));
+                System.out.println(" subject Name: ".concat(subject.getSubName()));
                 return;
             }
-        }
         System.out.println(" Subject not found ");
     }
 }
