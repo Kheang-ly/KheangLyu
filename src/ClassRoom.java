@@ -8,7 +8,7 @@ public class ClassRoom {
 
     private static ArrayList<ClassRoom> classRooms = new ArrayList<>();
 //    private Shift shifts = new Shift();
-    private ArrayList<Shift> shifts = Shift.getShifts();
+    private ArrayList<Shift> shifts;
 
     public ClassRoom() {
     }
@@ -16,8 +16,6 @@ public class ClassRoom {
     public ClassRoom(int classNo, String className) {
         this.classNo = classNo;
         this.className = className;
-        Shift shift = new Shift("M","E");
-        shifts.add(shift);
         classRooms.add(this);
     }
 
@@ -65,7 +63,7 @@ public class ClassRoom {
         for (int i = 0; i < classRooms.size(); i++) {
             if (isAvailableClassRoom(classRooms.get(i), id)) {
                 System.out.println(" Class Name : ".concat(classRooms.get(i).getClassName()));
-                classRooms.get(i).getShifts().schedule();
+                classRooms.get(i);
                 return;
             }
         }
