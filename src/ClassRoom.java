@@ -5,7 +5,7 @@ public class ClassRoom {
 
     private int classNo;
     private String className;
-    private static ArrayList<ClassRoom> classRooms = new ArrayList<>();
+    private static ArrayList<ClassRoom> classes=new ArrayList<>();
 
     public ClassRoom() {
     }
@@ -13,7 +13,7 @@ public class ClassRoom {
     public ClassRoom(int classNo, String className ) {
         this.classNo = classNo;
         this.className = className;
-        classRooms.add(this);
+        classes.add(this);
     }
 
     public int getClassNo() {
@@ -32,15 +32,14 @@ public class ClassRoom {
         this.className = className;
     }
 
-    public static ArrayList<ClassRoom> getClassRooms() {
-        return classRooms;
+
+    public static ArrayList<ClassRoom> getClasses() {
+        return classes;
     }
 
-    public static void setClassRooms(ArrayList<ClassRoom> classRooms) {
-        ClassRoom.classRooms = classRooms;
+    public static void setClasses(ArrayList<ClassRoom> classes) {
+        ClassRoom.classes = classes;
     }
-
-
 
     public static boolean isAvailableClassRoom (ClassRoom classRoom , int id ){
         if(Objects.equals(classRoom.classNo,id)){
@@ -51,14 +50,13 @@ public class ClassRoom {
 
 
     public static void checkClassRoom ( int id ){
-        for( int i=0 ; i<classRooms.size() ; i++ ){
-            if(isAvailableClassRoom(classRooms.get(i),id)){
-                System.out.println(" Class Name : ".concat(classRooms.get(i).getClassName()));
-                return;
+        for(int i=0;i<classes.size();i++)
+        {
+            if(isAvailableClassRoom(classes.get(i),id ))
+            {
+                System.out.println(" Class ID: ".concat(classes.get(i).classNo+"  "));
+                System.out.println(" Class Name: ".concat(classes.get(i).className));
             }
         }
-        System.out.println(" Class number not found ");
-
     }
-
 }

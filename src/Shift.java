@@ -1,92 +1,59 @@
+import java.util.ArrayList;
+
 public class Shift {
-    private String morning1;
-    private String morning2;
-    private String afternoon1;
-    private String afternoon2;
-    private String evening1;
-    private String evening2;
-    private ClassRoom classRoom;
 
-    public Shift(String morning1, String morning2, String afternoon1, String afternoon2, String evening1, String evening2, ClassRoom classRoom) {
-        this.morning1 = morning1;
-        this.morning2 = morning2;
-        this.afternoon1 = afternoon1;
-        this.afternoon2 = afternoon2;
-        this.evening1 = evening1;
-        this.evening2 = evening2;
-        this.classRoom = classRoom;
-    }
+    String shiftName;
+    private ClassRoom classes=new ClassRoom();
 
-    // Constructor for morning shift only
-    public Shift(String morning1, String morning2, ClassRoom classRoom) {
-        this.morning1 = morning1;
-        this.morning2 = morning2;
-    }
-
-    // Getters and setters for all properties
-    public String getMorning1() {
-        return morning1;
-    }
-
-    public void setMorning1(String morning1) {
-        this.morning1 = morning1;
-    }
-
-    public String getMorning2() {
-        return morning2;
-    }
-
-    public void setMorning2(String morning2) {
-        this.morning2 = morning2;
-    }
-
-    public String getAfternoon1() {
-        return afternoon1;
-    }
-
-    public void setAfternoon1(String afternoon1) {
-        this.afternoon1 = afternoon1;
-    }
-
-    public String getAfternoon2() {
-        return afternoon2;
-    }
-
-    public void setAfternoon2(String afternoon2) {
-        this.afternoon2 = afternoon2;
-    }
-
-    public String getEvening1() {
-        return evening1;
-    }
-
-    public void setEvening1(String evening1) {
-        this.evening1 = evening1;
-    }
-
-    public String getEvening2() {
-        return evening2;
-    }
-
-    public void setEvening2(String evening2) {
-        this.evening2 = evening2;
-    }
-
-    public ClassRoom getClassRoom() {
-        return classRoom;
-    }
-
-    public void setClassRoom(ClassRoom classRoom) {
-        this.classRoom = classRoom;
-    }
-
-
-    public boolean isShiftAvailable(String time) {
-        if (time.equals(morning1) || time.equals(morning2) ||
-                time.equals(afternoon1) || time.equals(afternoon2) ||
-                time.equals(evening1) || time.equals(evening2)) {
-            return true;
+    public Shift(String shiftName) {
+        this.shiftName=shiftName;
+        if(shiftName.equals("Morning"))
+        {
+            classes=new ClassRoom(101,"M150");
+            classes=new ClassRoom(102,"M160");
+            classes=new ClassRoom(103,"M170");
+            classes=new ClassRoom(104,"M180");
+            classes=new ClassRoom(105,"M190");
         }
-        return false;
+        else if(shiftName.equals("Afternoon"))
+        {
+            classes=new ClassRoom(102,"A160");
+        }
+        else if (shiftName.equals("Evening")) {
+            classes=new ClassRoom(101,"E150");
+        }
+
+    }
+
+    public String getShiftName() {
+        return shiftName;
+    }
+
+    public void setShiftName(String shiftName) {
+        this.shiftName = shiftName;
+    }
+
+    public ClassRoom getClasses() {
+        return classes;
+    }
+
+    public void setClasses(ClassRoom classes) {
+        this.classes = classes;
+    }
+
+    public ClassRoom getClassess() {
+        return classes;
+    }
+
+    public void setClassess(ClassRoom classess) {
+        this.classes = classess;
+    }
+
+    public static void display(Shift s) {
+        System.out.println(" Shift Name: " + s.getShiftName());
+        for (int i=0;i<s.getClassess().getClasses().size();i++) {
+            System.out.print( " Class Available \t Class Name: "+s.getClassess().getClasses().get(i).getClassName()+"\t");
+            System.out.println("Class No: " + s.getClassess().getClasses().get(i).getClassNo());
+        }
     }
 }

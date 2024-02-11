@@ -50,9 +50,6 @@ public class Teacher {
         Teacher.teachers = teachers;
     }
 
-
-
-
     public static boolean isAvailableId ( Teacher teacher , Integer id ){
         if(Objects.equals(teacher.id, id)){
             return true;
@@ -62,10 +59,10 @@ public class Teacher {
 
     public static void check( Integer id ){
         for( int i=0 ; i< teachers.size() ; i++ ){
-            if( isAvailableId(teachers.get(i),id)){
+            if( isAvailableId(teachers.get(i),id))
+            {
+                System.out.println(" ID : " + teachers.get(i).getId());
                 System.out.println(" Name : " + teachers.get(i).getName());
-                System.out.println("  ID : " + teachers.get(i).getId());
-                System.out.println(teachers.size());
                 return;
             }
         }
