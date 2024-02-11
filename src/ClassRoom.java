@@ -5,11 +5,7 @@ public class ClassRoom {
 
     private int classNo;
     private String className;
-
     private static ArrayList<ClassRoom> classRooms = new ArrayList<>();
-//    private Shift shifts = new Shift();
-    private ArrayList<Shift> shifts;
-
     public ClassRoom() {
     }
 
@@ -43,13 +39,7 @@ public class ClassRoom {
         ClassRoom.classRooms = classRooms;
     }
 
-//    public Shift getShifts() {
-//        return shifts;
-//    }
-//
-//    public void setShifts(Shift shifts) {
-//        this.shifts = shifts;
-//    }
+
 
     public static boolean isAvailableClassRoom(ClassRoom classRoom, int id) {
         if (Objects.equals(classRoom.classNo, id)) {
@@ -63,7 +53,6 @@ public class ClassRoom {
         for (int i = 0; i < classRooms.size(); i++) {
             if (isAvailableClassRoom(classRooms.get(i), id)) {
                 System.out.println(" Class Name : ".concat(classRooms.get(i).getClassName()));
-                classRooms.get(i);
                 return;
             }
         }
