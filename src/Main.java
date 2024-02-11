@@ -10,7 +10,7 @@ public class Main {
         Teacher teacher2 = new Teacher(3,"Weeken","male");
         ClassRoom classRoom = new ClassRoom();
 
-        Shift shift = new Shift();
+//        Shift shift = new Shift();
         ClassRoom classRoom1 = new ClassRoom(101,"M1");
         ClassRoom classRoom2 = new ClassRoom(102,"M2");
         ClassRoom.checkClassRoom(102);
