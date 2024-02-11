@@ -63,9 +63,9 @@ public class Teacher {
     public static void check( Integer id ){
         for( int i=0 ; i< teachers.size() ; i++ ){
             if( isAvailableId(teachers.get(i),id)){
+                System.out.println(" ID : " + teachers.get(i).getId());
                 System.out.println(" Name : " + teachers.get(i).getName());
-                System.out.println("  ID : " + teachers.get(i).getId());
-                System.out.println(teachers.size());
+
                 return;
             }
         }

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Schedule {
     ArrayList<Teacher> t=Teacher.getTeachers();
     ArrayList<Subject> subjects=new ArrayList<>();
+    private ArrayList<ClassRoom> classRooms = ClassRoom.getClassRooms();
     Schedule()
     {
         Subject sub1=new Subject(12,"Java");
@@ -35,5 +36,7 @@ public class Schedule {
     public static void show(Schedule schedule)
     {
         Subject.check(schedule.getSubjects().get(3),15);
+        ClassRoom.checkClassRoom(101);
+        Teacher.check(1);
     }
 }
