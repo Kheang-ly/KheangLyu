@@ -5,7 +5,7 @@ public class Schedule {
     ArrayList<Subject> subjects=new ArrayList<>();
 
     // chnage this line to class main line 10
-     private  Shift shift=new Shift("");
+     private  Shift shift=new Shift();
 
     Schedule()
     {
@@ -65,6 +65,7 @@ public class Schedule {
     }
     public  static void  showShiftCheck(Shift s){
         Shift.display(s);
+
     }
 
 

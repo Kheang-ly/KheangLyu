@@ -5,6 +5,9 @@ public class Shift {
     String shiftName;
     private ClassRoom classes=new ClassRoom();
 
+    public Shift() {
+    }
+
     public Shift(String shiftName) {
         this.shiftName=shiftName;
         if(shiftName.equals("Morning"))
@@ -13,14 +16,19 @@ public class Shift {
             classes=new ClassRoom(102,"M160");
             classes=new ClassRoom(103,"M170");
             classes=new ClassRoom(104,"M180");
-            classes=new ClassRoom(105,"M190");
         }
         else if(shiftName.equals("Afternoon"))
         {
+            classes=new ClassRoom(101,"A150");
             classes=new ClassRoom(102,"A160");
+            classes=new ClassRoom(103,"A170");
+            classes=new ClassRoom(104,"A180");
         }
         else if (shiftName.equals("Evening")) {
             classes=new ClassRoom(101,"E150");
+            classes=new ClassRoom(102,"E160");
+            classes=new ClassRoom(103,"E170");
+            classes=new ClassRoom(104,"E180");
         }
 
     }
