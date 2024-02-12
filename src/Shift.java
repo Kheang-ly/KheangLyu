@@ -53,6 +53,8 @@ public class Shift {
         this.classRooms = classRooms;
     }
 
+
+    //check in class schetdule line 6
     public static void display(Shift s) {
         System.out.println(" Shift Name: " + s.getShiftName());
         for (int i=0;i<s.getClassRooms().size();i++) {
@@ -60,4 +62,5 @@ public class Shift {
             System.out.println("Class No: " + s.getClassRooms().get(i).getClassNo());
         }
     }
+
 }

@@ -61,8 +61,10 @@ public class Teacher {
         for( int i=0 ; i< teachers.size() ; i++ ){
             if( isAvailableId(teachers.get(i),id))
             {
-                System.out.println(" ID : " + teachers.get(i).getId());
-                System.out.println(" Name : " + teachers.get(i).getName());
+                System.out.print(" ID : " + teachers.get(i).getId());
+                System.out.print("\t\t Name : " + teachers.get(i).getName());
+                System.out.print("\t\t Gender : " + teachers.get(i).getGender());
+                System.out.println();
                 return;
             }
         }
