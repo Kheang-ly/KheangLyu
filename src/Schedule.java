@@ -3,7 +3,10 @@ import java.util.ArrayList;
 public class Schedule {
     static ArrayList<Teacher> t=Teacher.getTeachers();
     ArrayList<Subject> subjects=new ArrayList<>();
-    private Shift shift=new Shift("Afternoon");
+
+    // chnage this line to class main line 10
+    private  Shift shift=new Shift();
+
     Schedule()
     {
         Subject sub1=new Subject(12,"Java");
@@ -31,7 +34,7 @@ public class Schedule {
     }
 
 
-    public Shift getShift() {
+    public  Shift getShift() {
         return shift;
     }
 
@@ -42,10 +45,30 @@ public class Schedule {
     public void setSubjects(ArrayList<Subject> subjects) {
         this.subjects = subjects;
     }
-    public static void show(Schedule schedule)
-    {
-        Subject.check(schedule.getSubjects().get(3),15);
-        Teacher.check(t.get(0).getId());
-        Shift.display(schedule.getShift());
+
+
+//    public static void show(Schedule schedule)
+//    {
+//        Subject.check(schedule.getSubjects().get(3),15);
+//        Teacher.check(t.get(0).getId());
+//        Shift.display(schedule.getShift());
+//    }
+
+
+
+
+    public  static void showAllTeacher(){
+        for(int i=0; i<Teacher.getTeachers().size(); i++)
+        {
+            Teacher.check(t.get(i).getId());
+        }
     }
+    public  static void  showShiftCheck(Shift s){
+        Shift.display(s);
+
+    }
+
+
+
+
 }
