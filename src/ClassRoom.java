@@ -5,7 +5,7 @@ public class ClassRoom {
 
     private int classNo;
     private String className;
-    private static ArrayList<ClassRoom> classes=new ArrayList<>();
+//    private static ArrayList<ClassRoom> classes=new ArrayList<>();
 
     public ClassRoom() {
     }
@@ -13,7 +13,6 @@ public class ClassRoom {
     public ClassRoom(int classNo, String className ) {
         this.classNo = classNo;
         this.className = className;
-        classes.add(this);
     }
 
     public int getClassNo() {
@@ -33,13 +32,13 @@ public class ClassRoom {
     }
 
 
-    public static ArrayList<ClassRoom> getClasses() {
-        return classes;
-    }
-
-    public static void setClasses(ArrayList<ClassRoom> classes) {
-        ClassRoom.classes = classes;
-    }
+//    public static ArrayList<ClassRoom> getClasses() {
+//        return classes;
+//    }
+//
+//    public static void setClasses(ArrayList<ClassRoom> classes) {
+//        ClassRoom.classes = classes;
+//    }
 
     public static boolean isAvailableClassRoom (ClassRoom classRoom , int id ){
         if(Objects.equals(classRoom.classNo,id)){
@@ -49,14 +48,8 @@ public class ClassRoom {
     }
 
 
-    public static void checkClassRoom ( int id ){
-        for(int i=0;i<classes.size();i++)
-        {
-            if(isAvailableClassRoom(classes.get(i),id ))
-            {
-                System.out.println(" Class ID: ".concat(classes.get(i).classNo+"  "));
-                System.out.println(" Class Name: ".concat(classes.get(i).className));
-            }
-        }
+    public static void checkClassRoom (ClassRoom c, int id ){
+        System.out.print(" ClassName : "+c.getClassName());
+        System.out.println(" Class No "+c.getClassNo());
     }
 }

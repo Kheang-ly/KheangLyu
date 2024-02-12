@@ -5,7 +5,11 @@ public class Schedule {
     ArrayList<Subject> subjects=new ArrayList<>();
 
     // chnage this line to class main line 10
+<<<<<<< HEAD
      private  Shift shift=new Shift();
+=======
+    private  Shift shift=new Shift();
+>>>>>>> 6112726cbb054a763a5769bc9af01dedfa61604e
 
     Schedule()
     {
@@ -58,10 +62,10 @@ public class Schedule {
 
 
     public  static void showAllTeacher(){
-       for(int i=0; i<Teacher.getTeachers().size(); i++)
-       {
-           Teacher.check(t.get(i).getId());
-       }
+        for(int i=0; i<Teacher.getTeachers().size(); i++)
+        {
+            Teacher.check(t.get(i).getId());
+        }
     }
     public  static void  showShiftCheck(Shift s){
         Shift.display(s);
