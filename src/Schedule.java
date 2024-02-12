@@ -5,11 +5,11 @@ public class Schedule {
     ArrayList<Subject> subjects=new ArrayList<>();
 
     // chnage this line to class main line 10
-<<<<<<< HEAD
+
      private  Shift shift=new Shift();
-=======
-    private  Shift shift=new Shift();
->>>>>>> 6112726cbb054a763a5769bc9af01dedfa61604e
+
+//    private  Shift shift=new Shift();
+
 
     Schedule()
     {

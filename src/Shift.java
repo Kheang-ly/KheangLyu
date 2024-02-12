@@ -6,8 +6,8 @@ public class Shift {
     //private ClassRoom classes=new ClassRoom();
     private ArrayList<ClassRoom> classRooms=new ArrayList<>();
 
-    public Shift() {
-    }
+//    public Shift() {
+//    }
 
     public Shift() {
     }
@@ -16,7 +16,7 @@ public class Shift {
         this.shiftName=shiftName;
         if(shiftName.equals("Morning"))
         {
-<<<<<<< HEAD
+
             classes=new ClassRoom(101,"M150");
             classes=new ClassRoom(102,"M160");
             classes=new ClassRoom(103,"M170");
@@ -34,7 +34,7 @@ public class Shift {
             classes=new ClassRoom(102,"E160");
             classes=new ClassRoom(103,"E170");
             classes=new ClassRoom(104,"E180");
-=======
+
             ClassRoom classes1=new ClassRoom(101,"M150");
             ClassRoom classes2=new ClassRoom(102,"M160");
             ClassRoom classes3=new ClassRoom(103,"M170");
@@ -55,7 +55,7 @@ public class Shift {
         else if (shiftName.equals("Evening")) {
             ClassRoom classes1=new ClassRoom(101,"E150");
             classRooms.add(classes1);
->>>>>>> 6112726cbb054a763a5769bc9af01dedfa61604e
+
         }
 
     }
