@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.TreeSet;
 
 public class ClassRoom {
     private boolean assigned = false; // Track if the class is assigned
@@ -42,16 +44,6 @@ public class ClassRoom {
     public Subject getAssignedSubject() {
         return assignedSubject;
     }
-
-    public static boolean isAvailableClassRoom(int id) {
-        for (ClassRoom classroom : classes) {
-            if (classroom.getClassNo() == id && !classroom.isAssigned()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static ClassRoom getClassRoomById(int id) {
         for (ClassRoom classroom : classes) {
             if (classroom.getClassNo() == id) {
@@ -59,6 +51,14 @@ public class ClassRoom {
             }
         }
         return null;
+    }
+    public static boolean isAvailableClassRoom(int classNo) {
+        for (ClassRoom classroom : classes) {
+            if (classroom.getClassNo() == classNo && !classroom.isAssigned()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void assignTeacherToClass(Teacher teacher, Subject subject, int classNo, String shiftName) {
@@ -71,11 +71,13 @@ public class ClassRoom {
     }
 
     public static void displayAvailableAndUnavailableClasses() {
+        HashSet<ClassRoom> uniqueClasses = new HashSet<>(classes);
+
         boolean availableExist = false;
         boolean unavailableExist = false;
 
         System.out.println("Available Classes:");
-        for (ClassRoom classroom : classes) {
+        for (ClassRoom classroom : uniqueClasses) {
             if (!classroom.isAssigned()) {
                 System.out.println("Class ID: " + classroom.getClassNo() + ", Class Name: " + classroom.getClassName());
                 availableExist = true;
@@ -87,7 +89,7 @@ public class ClassRoom {
         }
 
         System.out.println("\nUnavailable Classes:");
-        for (ClassRoom classroom : classes) {
+        for (ClassRoom classroom : uniqueClasses) {
             if (classroom.isAssigned()) {
                 Teacher teacher = classroom.getAssignedTeacher();
                 Subject subject = classroom.getAssignedSubject();
@@ -101,4 +103,6 @@ public class ClassRoom {
             System.out.println("No unavailable classes.");
         }
     }
+
+    // Other methods...
 }

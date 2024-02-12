@@ -139,8 +139,8 @@ public class Main {
                 case 4:
                     System.out.println("All Information:");
                     System.out.println("Shifts:");
-                    for (Shift shiftt : new Shift[]{new Shift("Morning"), new Shift("Afternoon"), new Shift("Evening")}) {
-                        Shift.display(shiftt);
+                    for (Shift shift : new Shift[]{new Shift("Morning"), new Shift("Afternoon"), new Shift("Evening")}) {
+                        Shift.display(shift);
                     }
                     System.out.println("Classrooms:");
                     ClassRoom.displayAvailableAndUnavailableClasses();
