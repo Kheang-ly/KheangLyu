@@ -4,6 +4,9 @@ public class Shift {
 
     String shiftName;
     private ArrayList<ClassRoom> classRooms=new ArrayList<>();
+
+    public Shift() {
+    }
     public Shift(String shiftName) {
         this.shiftName=shiftName;
         switch (shiftName) {
@@ -20,11 +23,11 @@ public class Shift {
                 classRooms.add(classes5);
             }
             case "Afternoon" -> {
-                ClassRoom classes1 = new ClassRoom(101, "A150");
-                ClassRoom classes2 = new ClassRoom(102, "A160");
-                ClassRoom classes3 = new ClassRoom(103, "A170");
-                ClassRoom classes4 = new ClassRoom(104, "A180");
-                ClassRoom classes5 = new ClassRoom(105, "A190");
+                ClassRoom classes1 = new ClassRoom(201, "A150");
+                ClassRoom classes2 = new ClassRoom(202, "A160");
+                ClassRoom classes3 = new ClassRoom(203, "A170");
+                ClassRoom classes4 = new ClassRoom(204, "A180");
+                ClassRoom classes5 = new ClassRoom(205, "A190");
                 classRooms.add(classes1);
                 classRooms.add(classes2);
                 classRooms.add(classes3);
@@ -32,11 +35,11 @@ public class Shift {
                 classRooms.add(classes5);
             }
             case "Evening" -> {
-                ClassRoom classes1 = new ClassRoom(101, "E150");
-                ClassRoom classes2 = new ClassRoom(102, "E160");
-                ClassRoom classes3 = new ClassRoom(103, "E170");
-                ClassRoom classes4 = new ClassRoom(104, "E180");
-                ClassRoom classes5 = new ClassRoom(105, "E190");
+                ClassRoom classes1 = new ClassRoom(301, "E150");
+                ClassRoom classes2 = new ClassRoom(302, "E160");
+                ClassRoom classes3 = new ClassRoom(303, "E170");
+                ClassRoom classes4 = new ClassRoom(304, "E180");
+                ClassRoom classes5 = new ClassRoom(305, "E190");
                 classRooms.add(classes1);
                 classRooms.add(classes2);
                 classRooms.add(classes3);

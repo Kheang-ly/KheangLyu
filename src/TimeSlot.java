@@ -55,6 +55,8 @@ class TimeSlot {
         // Implement logic to check if this time slot overlaps with another
         return false;
     }
+
+    // Other methods like toString(), getters, setters, etc.
 }
 
 
