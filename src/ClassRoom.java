@@ -7,13 +7,14 @@ public class ClassRoom {
     private Subject assignedSubject; // Reference to the assigned subject
     private int classNo;
     private String className;
-    private static ArrayList<ClassRoom> classes = new ArrayList<>();
+
+    //private static ArrayList<ClassRoom> classes = new ArrayList<>();
     public ClassRoom() {
     }
     public ClassRoom(int classNo, String className) {
         this.classNo = classNo;
         this.className = className;
-        classes.add(this);
+//        classes.add(this);
     }
     public int getClassNo() {
         return classNo;
@@ -37,23 +38,22 @@ public class ClassRoom {
         return assignedSubject;
     }
 
-    public static boolean isAvailableClassRoom(int id) {
-        for (ClassRoom classroom : classes) {
-            if (classroom.getClassNo() == id && !classroom.isAssigned()) {
-                return true;
-            }
+    public static boolean isAvailableClassRoom(ClassRoom classroom, int id) {
+        if (classroom.getClassNo() == id && !classroom.isAssigned()) {
+            return true;
         }
         return false;
     }
-    public static ClassRoom getClassRoomById(int id) {
-        for (ClassRoom classroom : classes) {
-            if (classroom.getClassNo() == id) {
-                return classroom;
-            }
+    public  ClassRoom getClassRoomById(int id) {
+
+        if (classroom.getClassNo() == id) {
+            return classroom;
         }
         return null;
     }
+
     public static void assignTeacherToClass(Teacher teacher, Subject subject, int classNo, String shiftName) {
+
         ClassRoom classRoom = getClassRoomById(classNo);
         if (classRoom != null && !classRoom.isAssigned()) {
             classRoom.assignedTeacher = teacher;
@@ -63,19 +63,17 @@ public class ClassRoom {
     }
     public static void displayAvailableAndUnavailableClasses() {
         System.out.println("Available Classes:");
-        for (ClassRoom classroom : classes) {
-            if (!classroom.isAssigned()) {
-                System.out.println("Class ID: " + classroom.classNo + ", Class Name: " + classroom.className);
-            }
+        if (!classroom.isAssigned()) {
+            System.out.println("Class ID: " + classroom.classNo + ", Class Name: " + classroom.className);
+
         }
+
         System.out.println("\nUnavailable Classes:");
-        for (ClassRoom classroom : classes) {
-            if (classroom.isAssigned()) {
-                Teacher teacher = classroom.getAssignedTeacher();
-                Subject subject = classroom.getAssignedSubject();
-                System.out.println("Class ID: " + classroom.classNo + ", Class Name: " + classroom.className +
-                        ", Assigned Teacher: " + teacher.getName() + " (ID: " + teacher.getId() + "), Assigned Subject: " + subject.getSubName() + " (ID: " + subject.getSubID() + ")");
-            }
+        if (classroom.isAssigned()) {
+            Teacher teacher = classroom.getAssignedTeacher();
+            Subject subject = classroom.getAssignedSubject();
+            System.out.println("Class ID: " + classroom.classNo + ", Class Name: " + classroom.className +
+                    ", Assigned Teacher: " + teacher.getName() + " (ID: " + teacher.getId() + "), Assigned Subject: " + subject.getSubName() + " (ID: " + subject.getSubID() + ")");
         }
     }
 }
