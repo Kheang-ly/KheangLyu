@@ -9,43 +9,43 @@ public class Shift {
     }
     public Shift(String shiftName) {
         this.shiftName=shiftName;
-        if(shiftName.equals("Morning"))
-        {
-            ClassRoom classes1=new ClassRoom(101,"M150");
-            ClassRoom classes2=new ClassRoom(102,"M160");
-            ClassRoom classes3=new ClassRoom(103,"M170");
-            ClassRoom classes4=new ClassRoom(104,"M180");
-            ClassRoom classes5=new ClassRoom(105,"M190");
-            classRooms.add(classes1);
-            classRooms.add(classes2);
-            classRooms.add(classes3);
-            classRooms.add(classes4);
-            classRooms.add(classes5);
-        }
-        else if(shiftName.equals("Afternoon"))
-        {
-            ClassRoom classes1=new ClassRoom(101,"A150");
-            ClassRoom classes2=new ClassRoom(102,"A160");
-            ClassRoom classes3=new ClassRoom(103,"A170");
-            ClassRoom classes4=new ClassRoom(104,"A180");
-            ClassRoom classes5=new ClassRoom(105,"A190");
-            classRooms.add(classes1);
-            classRooms.add(classes2);
-            classRooms.add(classes3);
-            classRooms.add(classes4);
-            classRooms.add(classes5);
-        }
-        else if (shiftName.equals("Evening")) {
-            ClassRoom classes1=new ClassRoom(101,"E150");
-            ClassRoom classes2=new ClassRoom(102,"E160");
-            ClassRoom classes3=new ClassRoom(103,"E170");
-            ClassRoom classes4=new ClassRoom(104,"E180");
-            ClassRoom classes5=new ClassRoom(105,"E190");
-            classRooms.add(classes1);
-            classRooms.add(classes2);
-            classRooms.add(classes3);
-            classRooms.add(classes4);
-            classRooms.add(classes5);
+        switch (shiftName) {
+            case "Morning" -> {
+                ClassRoom classes1 = new ClassRoom(101, "M150");
+                ClassRoom classes2 = new ClassRoom(102, "M160");
+                ClassRoom classes3 = new ClassRoom(103, "M170");
+                ClassRoom classes4 = new ClassRoom(104, "M180");
+                ClassRoom classes5 = new ClassRoom(105, "M190");
+                classRooms.add(classes1);
+                classRooms.add(classes2);
+                classRooms.add(classes3);
+                classRooms.add(classes4);
+                classRooms.add(classes5);
+            }
+            case "Afternoon" -> {
+                ClassRoom classes1 = new ClassRoom(201, "A150");
+                ClassRoom classes2 = new ClassRoom(202, "A160");
+                ClassRoom classes3 = new ClassRoom(203, "A170");
+                ClassRoom classes4 = new ClassRoom(204, "A180");
+                ClassRoom classes5 = new ClassRoom(205, "A190");
+                classRooms.add(classes1);
+                classRooms.add(classes2);
+                classRooms.add(classes3);
+                classRooms.add(classes4);
+                classRooms.add(classes5);
+            }
+            case "Evening" -> {
+                ClassRoom classes1 = new ClassRoom(301, "E150");
+                ClassRoom classes2 = new ClassRoom(302, "E160");
+                ClassRoom classes3 = new ClassRoom(303, "E170");
+                ClassRoom classes4 = new ClassRoom(304, "E180");
+                ClassRoom classes5 = new ClassRoom(305, "E190");
+                classRooms.add(classes1);
+                classRooms.add(classes2);
+                classRooms.add(classes3);
+                classRooms.add(classes4);
+                classRooms.add(classes5);
+            }
         }
     }
     public String getShiftName() {

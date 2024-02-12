@@ -145,7 +145,6 @@ public class Main {
                     System.out.println("Classrooms:");
                     ClassRoom.displayAvailableAndUnavailableClasses();
                     break;
-
                 case 0:
                     System.out.println("Exiting...");
                     break;

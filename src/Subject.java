@@ -14,12 +14,15 @@ public class Subject {
     public int getSubID() {
         return subID;
     }
+
     public void setSubID(int subID) {
         this.subID = subID;
     }
+
     public String getSubName() {
         return subName;
     }
+
     public void setSubName(String subName) {
         this.subName = subName;
     }

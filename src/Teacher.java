@@ -5,8 +5,8 @@ public class Teacher {
     private String name;
     private String gender;
     private static ArrayList<Teacher> teachers = new ArrayList<>();
-//    public Teacher() {
-//    }
+    public Teacher() {
+    }
     public Teacher(Integer id, String name, String gender) {
         this.id = id;
         this.name = name;
