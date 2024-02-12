@@ -1,23 +1,18 @@
 import java.util.ArrayList;
 import java.util.Objects;
-
 public class Teacher {
-
     private Integer id;
     private String name;
     private String gender;
     private static ArrayList<Teacher> teachers = new ArrayList<>();
-
-    public Teacher() {
-    }
-
+//    public Teacher() {
+//    }
     public Teacher(Integer id, String name, String gender) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         teachers.add(this);
     }
-
     public Integer getId() {
         return id;
     }
@@ -56,19 +51,16 @@ public class Teacher {
         }
         return false;
     }
-
     public static void check( Integer id ){
-        for( int i=0 ; i< teachers.size() ; i++ ){
-            if( isAvailableId(teachers.get(i),id))
-            {
-                System.out.print(" ID : " + teachers.get(i).getId());
-                System.out.print("\t\t Name : " + teachers.get(i).getName());
-                System.out.print("\t\t Gender : " + teachers.get(i).getGender());
+        for (Teacher teacher : teachers) {
+            if (isAvailableId(teacher, id)) {
+                System.out.print(" ID : " + teacher.getId());
+                System.out.print("\t\t Name : " + teacher.getName());
+                System.out.print("\t\t Gender : " + teacher.getGender());
                 System.out.println();
                 return;
             }
         }
         System.out.println("  Teacher ID not found !!!");
     }
-
 }

@@ -3,38 +3,14 @@ import java.util.ArrayList;
 public class Shift {
 
     String shiftName;
-    //private ClassRoom classes=new ClassRoom();
     private ArrayList<ClassRoom> classRooms=new ArrayList<>();
-
-//    public Shift() {
-//    }
 
     public Shift() {
     }
-
     public Shift(String shiftName) {
         this.shiftName=shiftName;
         if(shiftName.equals("Morning"))
         {
-
-            classes=new ClassRoom(101,"M150");
-            classes=new ClassRoom(102,"M160");
-            classes=new ClassRoom(103,"M170");
-            classes=new ClassRoom(104,"M180");
-        }
-        else if(shiftName.equals("Afternoon"))
-        {
-            classes=new ClassRoom(101,"A150");
-            classes=new ClassRoom(102,"A160");
-            classes=new ClassRoom(103,"A170");
-            classes=new ClassRoom(104,"A180");
-        }
-        else if (shiftName.equals("Evening")) {
-            classes=new ClassRoom(101,"E150");
-            classes=new ClassRoom(102,"E160");
-            classes=new ClassRoom(103,"E170");
-            classes=new ClassRoom(104,"E180");
-
             ClassRoom classes1=new ClassRoom(101,"M150");
             ClassRoom classes2=new ClassRoom(102,"M160");
             ClassRoom classes3=new ClassRoom(103,"M170");
@@ -45,38 +21,45 @@ public class Shift {
             classRooms.add(classes3);
             classRooms.add(classes4);
             classRooms.add(classes5);
-
         }
         else if(shiftName.equals("Afternoon"))
         {
-            ClassRoom classes1=new ClassRoom(102,"A160");
+            ClassRoom classes1=new ClassRoom(101,"A150");
+            ClassRoom classes2=new ClassRoom(102,"A160");
+            ClassRoom classes3=new ClassRoom(103,"A170");
+            ClassRoom classes4=new ClassRoom(104,"A180");
+            ClassRoom classes5=new ClassRoom(105,"A190");
             classRooms.add(classes1);
+            classRooms.add(classes2);
+            classRooms.add(classes3);
+            classRooms.add(classes4);
+            classRooms.add(classes5);
         }
         else if (shiftName.equals("Evening")) {
             ClassRoom classes1=new ClassRoom(101,"E150");
+            ClassRoom classes2=new ClassRoom(102,"E160");
+            ClassRoom classes3=new ClassRoom(103,"E170");
+            ClassRoom classes4=new ClassRoom(104,"E180");
+            ClassRoom classes5=new ClassRoom(105,"E190");
             classRooms.add(classes1);
-
+            classRooms.add(classes2);
+            classRooms.add(classes3);
+            classRooms.add(classes4);
+            classRooms.add(classes5);
         }
-
     }
-
     public String getShiftName() {
         return shiftName;
     }
-
     public void setShiftName(String shiftName) {
         this.shiftName = shiftName;
     }
-
     public ArrayList<ClassRoom> getClassRooms() {
         return classRooms;
     }
-
     public void setClassRooms(ArrayList<ClassRoom> classRooms) {
         this.classRooms = classRooms;
     }
-
-
     //check in class schetdule line 6
     public static void display(Shift s) {
         System.out.println(" Shift Name: " + s.getShiftName());
@@ -85,5 +68,4 @@ public class Shift {
             System.out.println("Class No: " + s.getClassRooms().get(i).getClassNo());
         }
     }
-
 }
