@@ -2,6 +2,7 @@ import org.nocrala.tools.texttablefmt.BorderStyle;
 import org.nocrala.tools.texttablefmt.CellStyle;
 import org.nocrala.tools.texttablefmt.ShownBorders;
 import org.nocrala.tools.texttablefmt.Table;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -104,6 +105,8 @@ public class ClassRoom {
         }
         System.out.println(taClass.render());
     }
+    // Assign teacher to class
+    // Assign teacher to class
     public static void assignTeacherToClass(Teacher teacher, Subject subject, int classNo, String shiftName) {
         for (ClassRoom room : availableClasses) {
             if (room.getClassNo() == classNo) {
@@ -113,8 +116,8 @@ public class ClassRoom {
                 }
                 room.setAssignedTeacher(teacher);
                 room.setAssignedSubject(subject);
-                System.out.println("Teacher assigned successfully to class " + classNo + " in " + shiftName + " shift.");
-                System.out.println("Teacher " + teacher.getName() + " added to class " + classNo + " for subject " + subject.getSubName());
+                System.out.println("ពួកយើងបានបញ្ចូលគ្រូបង្រៀនចូលទៅថ្នាក់  " .concat(classNo+"")  .concat(" នៅក្នុងវេន( ")  .concat(shiftName)  .concat(" ) បានជោគជ័យ ។") );
+                System.out.println("លោកគ្រូ/អ្នកគ្រូឈ្មោះ : ".concat(teacher.getName())  .concat(" បានបញ្ចូលទៅក្នុងថ្នាក់  ")  .concat(room.className)  .concat(" មុខវិជ្ជា ")  .concat(subject.getSubName()) );
                 return;
             }
         }

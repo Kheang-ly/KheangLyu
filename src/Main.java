@@ -3,8 +3,10 @@ import org.nocrala.tools.texttablefmt.BorderStyle;
 import org.nocrala.tools.texttablefmt.CellStyle;
 import org.nocrala.tools.texttablefmt.ShownBorders;
 import org.nocrala.tools.texttablefmt.Table;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 public class Main implements BoxBorder{
     static Scanner sc = new Scanner(System.in);
 
@@ -23,9 +25,9 @@ public class Main implements BoxBorder{
                 System.out.println(HORIZONTAL_BORDER.repeat(60));
                 System.out.println("1.ពិនិត្យមើលព័ត៏មានរបស់គ្រូបង្រៀន");
                 System.out.println("2.ពិនិត្យមើលព័ត៏មានវេនសិក្សានឹងថ្នាក់សិក្សា");
-                System.out.println("3. ដាក់បញ្ចុលគ្រូទៅតាមថ្នាក់បង្រៀន");
+                System.out.println("3.ដាក់បញ្ចុលគ្រូទៅតាមថ្នាក់បង្រៀន");
                 System.out.println("4.ពិនិត្យមើលព័ត៏មានថ្នាក់ដែលបង្រៀនបាននឹងបង្រៀនមិនបាន");
-                System.out.println("0.ចាកចេញ");
+                System.out.println("5.ចាកចេញ");
                 System.out.print("ជ្រើសរើសជម្រើស(1-4)ខាងលើ : ");
                 choosedOption = sc.nextInt();
                 System.out.println(HORIZONTAL_BORDER.repeat(60) + "\n");
@@ -55,17 +57,17 @@ public class Main implements BoxBorder{
                                 Schedule.showShiftCheck(shiftEvening);
                                 break;
                             default:
-                                System.out.println("សូមអធ្យាស្រ័យ!សូមពិនិត្យមើលការជ្រើសរើសរបស់អ្នកសារជាថ្មី។\n" +
-                                        "Sorry you choosed invalid option please check you option again..");
+                                System.out.println("សូមអធ្យាស្រ័យ!សូមពិនិត្យមើលការជ្រើសរើសរបស់អ្នកសារជាថ្មី។\n".concat
+                                        ("Sorry you choose invalid option please check you option again.."));
                                 break;
                         }
                         break;
                     case 3:
-                        System.out.println("ដាក់បញ្ចុលគ្រូទៅកាន់ថ្នាក់បង្រៀន");
+                        System.out.println("ដាក់បញ្ចូលគ្រូទៅកាន់ថ្នាក់បង្រៀន");
                         int teacherId;
                         boolean checkID = true;
                         do {
-                            System.out.print("សូមបញ្ចូលលេខសម្គាល់របស់គ្រូ : ");
+                            System.out.print("សូមបញ្ចូលលេខសម្គាល់របស់គ្រូបង្រៀន : ");
                             teacherId = sc.nextInt();
                             for (Teacher t : Teacher.getTeachers()) {
                                 if (t.getId() == teacherId) {
@@ -73,7 +75,7 @@ public class Main implements BoxBorder{
                                 }
                             }
                             if (checkID)
-                                System.out.println("អត់មានគ្រូដែលអ្នកបញ្ចូលនោះទេ....! ");
+                                System.out.println("មិនមានគ្រូដែលអ្នកបញ្ចូលនោះទេ....! ");
                         } while (checkID);
                         System.out.println("សូមជ្រើសរើសវេនសិក្សាដែលបានបង្ហាញនៅខាងក្រោម :");
                         System.out.print("""
@@ -97,6 +99,7 @@ public class Main implements BoxBorder{
                                 System.out.println("សូមជ្រើសរើសម្តងទៀត។");
                                 break;
                         }
+
                         if (!shiftName.isEmpty()) {
                             Table ta = new Table(2, BorderStyle.UNICODE_BOX, ShownBorders.ALL);
                             CellStyle cellStyle = new CellStyle(CellStyle.HorizontalAlign.center);
@@ -105,7 +108,7 @@ public class Main implements BoxBorder{
                             System.out.println();
                             System.out.println(HORIZONTAL_BORDER.repeat(60));
                             Shift shift = new Shift(shiftName);
-                            System.out.println("ថ្នាក់ដែលអាចបញ្ចលនៅវេន(" + shiftName + ")ត្រូវបានបង្ហាញនៅខាងក្រោម");
+                            System.out.println("ថ្នាក់ដែលអាចបញ្ចូលនៅវេន(".concat(shiftName).concat(")ត្រូវបានបង្ហាញនៅខាងក្រោម"));
                             ta.addCell("Class No ", cellStyle);
                             ta.addCell("Class Name " , cellStyle);
                             for (ClassRoom cr : shift.getClassRooms()) {
@@ -126,27 +129,27 @@ public class Main implements BoxBorder{
                                     System.out.println("ថ្នាក់ដែលអ្នកបានជ្រើសរើសគឺមានគ្រូបង្រៀនរួចហើយ");
                                     classTaken = true;
                                 }
-                                for (ClassRoom cr : shift.getClassRooms()) {
-                                    if (cr.getClassNo() == classChoice) {
-                                        classRoom = cr;
-                                        validClassChoice = true;
-                                        break;
-                                    }
-                                }
                             } while (classTaken);
+                            for (ClassRoom cr : shift.getClassRooms()) {
+                                if (cr.getClassNo() == classChoice) {
+                                    classRoom = cr;
+                                    validClassChoice = true;
+                                    break;
+                                }
+                            }
                             if (validClassChoice) {
-                                System.out.println("ពួកយើងបានបញ្ចុលគ្រូបង្រៀនចូលទៅថ្នាក់ " + classRoom.getClassName() + "  នៅក្នុងេវេន( " + shiftName + ") បានជោគជ័យ ។");
+                                System.out.println("ពួកយើងបានបញ្ចូលគ្រូបង្រៀនចូលទៅថ្នាក់ " .concat( classRoom.getClassName()).concat("  នៅក្នុងវេន( ")   .concat(shiftName)  .concat(") បានជោគជ័យ ។") );
                                 int subjectId;
                                 boolean checkSubject = true;
                                 do {
-                                    System.out.print("សូមបញ្ចូលលេខសម្កាល់របស់មុខវិទ្យា : : ");
+                                    System.out.print("សូមបញ្ចូលលេខសម្កាល់របស់មុខវិជ្ជា : ");
                                     subjectId = sc.nextInt();
                                     for (Subject s : schedule.getSubjects()) {
                                         if (s.getSubID() == subjectId)
                                             checkSubject = false;
                                     }
                                     if (checkSubject)
-                                        System.out.println("មិនមានលេខសម្កាល់របស់មុខវិទ្យាដែលលោកអ្នកបញ្ចុលនោះទេ។ ");
+                                        System.out.println("មិនមានលេខសម្កាល់របស់មុខវិជ្ជាដែលអ្នកបញ្ចូលនោះទេ។ ");
                                 } while (checkSubject);
                                 // Debug statements to check input values
 //                                System.out.println("Teacher ID : " + teacherId);
@@ -172,8 +175,6 @@ public class Main implements BoxBorder{
                                 // Add teacher to class if all objects are found
                                 if (teacherToAdd != null && subjectToAdd != null) {
                                     ClassRoom.assignTeacherToClass(teacherToAdd, subjectToAdd, classChoice, shiftName);
-                                    System.out.println("ួកយើងបានបញ្ចុលគ្រូបង្រៀនចូលទៅថ្នាក់  " + classChoice + "នៅក្នុងេវេន( " + shiftName + " ) បានជោគជ័យ ។");
-                                    System.out.println("លោកគ្រូ/អ្នកគ្រូឈ្មោះ : " + teacherToAdd.getName() + " បានបញ្ចូលទៅក្នុងថ្នាក់  " + classRoom.getClassName() + " for subject " + subjectToAdd.getSubName());
                                     if (!ClassRoom.isAvailableClassRoom(classChoice)) {
                                         System.out.println("ថ្នាក់ដែលបានជ្រើសរើសមិនមានក្នុងជម្រើសលើយ៕ សូមពិនិត្យមើលការជ្រើសរើសសារជាថ្មី។");
                                         break;
@@ -185,29 +186,30 @@ public class Main implements BoxBorder{
                                     System.out.println("មានបញ្ចុលព័តមានរបស់លោកង្នកមានបញ្ហា។ សូមធ្វើការបំពេញព័ត៏មានសារជាថ្មិ៕");
                                 }
                             } else {
-                                System.out.println("្នាក់ដែលបានជ្រើសរើសមិនមានក្នុងជម្រើសលើយ៕ សូមពិនិត្យមើលការជ្រើសរើសសារជាថ្មី។");
+                                System.out.println("ថ្នាក់ដែលបានជ្រើសរើសមិនមានក្នុងជម្រើសឡើយ! សូមពិនិត្យមើលការជ្រើសរើសសារជាថ្មី។");
                             }
                         }
+                        shiftName = "";
                         break;
-
                     case 4:
                         System.out.println("ព័ត៏មានរបស់កាលវិភាគ");
+                        System.out.println("Shifts:");
                         for (Shift shift : new Shift[]{new Shift("Morning"), new Shift("Afternoon"), new Shift("Evening")}) {
                             // Shift.display(shift);
                             System.out.print("");
                         }
-                        System.out.println("ថ្នាក់រៀនដេលមាននៅក្នុងការគ្រប់គ្រង");
+                        System.out.println("ថ្នាក់រៀនដែលមាននៅក្នុងការគ្រប់គ្រង");
                         ClassRoom.displayAvailableAndUnavailableClasses();
                         break;
                     case 0:
-                        System.out.println("កំពុងចាកចេញ.........!");
+                        System.out.println("សូមអរគុណ...!");
                         break;
                     default:
-                        System.out.println("សូមព្យាយាមម្តងទៀត.....!");
+                        System.out.println("សូមព្យាយាមម្តងទៀត....!");
                         break;
                 }
             } catch (InputMismatchException e) {
-                System.out.println("សូមព្យាយាមម្តងទៀត.....!");
+                System.out.println("សូមព្យាយាមម្តងទៀត....!");
                 // Clear the input buffer
                 sc.nextLine();
                 choosedOption = -1; // Reset the option to force the loop to continue

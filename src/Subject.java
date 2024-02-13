@@ -4,12 +4,11 @@ import java.util.Objects;
 public class Subject {
     private int subID;
     private String subName;
-   // private static ArrayList<Subject> subjects=new ArrayList<>();
+
     public Subject (int subID,String subName)
     {
         this.subID=subID;
         this.subName=subName;
-      //  subjects.add(this);
     }
     public int getSubID() {
         return subID;
