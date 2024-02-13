@@ -1,57 +1,61 @@
-import java.util.Objects;
+import java.util.ArrayList;
 
 public class Shift {
-    private String[][] shift = new String[2][5];
-    private String morning = "Morning";
-    private String afternoon = "Afternoon";
-    private String evening = "Evening";
-    private String[] optionShift = new String[]{morning,afternoon,evening};
 
-    public String getMorning() {
-        return morning;
-    }
+    String shiftName;
+    private ClassRoom classes=new ClassRoom();
 
-    public void setMorning(String morning) {
-        this.morning = morning;
-    }
-
-    public String getAfternoon() {
-        return afternoon;
-    }
-
-    public void setAfternoon(String afternoon) {
-        this.afternoon = afternoon;
-    }
-
-    public String getEvening() {
-        return evening;
-    }
-
-    public void setEvening(String evening) {
-        this.evening = evening;
-    }
-
-    public boolean isShiftAvailable(String shift) {
-        for (String option : optionShift) {
-            if (Objects.equals(option, shift)) {
-                System.out.println("Shift found: " + option);
-                return true;
-            }
+    public Shift(String shiftName) {
+        this.shiftName=shiftName;
+        if(shiftName.equals("Morning"))
+        {
+            classes=new ClassRoom(101,"M150");
+            classes=new ClassRoom(102,"M160");
+            classes=new ClassRoom(103,"M170");
+            classes=new ClassRoom(104,"M180");
+            classes=new ClassRoom(105,"M190");
         }
-        return false;
-    }
-    public void check(){
-        for (int i=0 ; i<shift.length ; i++){
-            for(int j=0 ; j<shift[i].length ; j++){
-                shift[i][j] = "NULL" ;
-            }
+        else if(shiftName.equals("Afternoon"))
+        {
+            classes=new ClassRoom(102,"A160");
         }
-        System.out.println("=".repeat(100));
-        for(String[] n : shift){
-            for(String s : n){
-                System.out.print(s + "\t");
-            }
-            System.out.println();
+        else if (shiftName.equals("Evening")) {
+            classes=new ClassRoom(101,"E150");
+        }
+
+    }
+
+    public String getShiftName() {
+        return shiftName;
+    }
+
+    public void setShiftName(String shiftName) {
+        this.shiftName = shiftName;
+    }
+
+    public ClassRoom getClasses() {
+        return classes;
+    }
+
+    public void setClasses(ClassRoom classes) {
+        this.classes = classes;
+    }
+
+    public ClassRoom getClassess() {
+        return classes;
+    }
+
+    public void setClassess(ClassRoom classess) {
+        this.classes = classess;
+    }
+
+
+    //check in class schetdule line 6
+    public static void display(Shift s) {
+        System.out.println(" Shift Name: " + s.getShiftName());
+        for (int i=0;i<s.getClassess().getClasses().size();i++) {
+            System.out.print( " Class Available \t Class Name: "+s.getClassess().getClasses().get(i).getClassName()+"\t");
+            System.out.println("Class No: " + s.getClassess().getClasses().get(i).getClassNo());
         }
     }
 
