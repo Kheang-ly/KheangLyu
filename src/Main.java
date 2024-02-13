@@ -63,9 +63,24 @@ public class Main implements BoxBorder{
                     case 3:
                         Table table = new Table(1, BorderStyle.UNICODE_BOX, ShownBorders.SURROUND);
                         table.setColumnWidth(0,30,40);
-                        System.out.println(blue + "Adding teacher to class:");
-                        System.out.print("Enter teacher ID : ");
-                        int teacherId = sc.nextInt();
+                        System.out.println(blue + "Adding teacher to class");
+                        int teacherId;
+                        boolean checkID=true;
+                        do
+                        {
+                            System.out.print("Enter teacher ID : ");
+                            teacherId = sc.nextInt();
+                            for(Teacher t:Teacher.getTeachers())
+                            {
+                                if(t.getId()==teacherId)
+                                {
+                                    checkID=false;
+                                }
+                            }
+                            if(checkID)
+                                System.out.println("អត់មានគ្រូ ");
+                        }while(checkID);
+
                         table.addCell(" ".repeat(7) + "1. Morning");
                         table.addCell(" ".repeat(7) + "2. Afternoon");
                         table.addCell(" ".repeat(7) + "3. Evening");
@@ -95,7 +110,7 @@ public class Main implements BoxBorder{
                             System.out.println(HORIZONTAL_BORDER.repeat(60));
                             Shift shift = new Shift(shiftName);
                             System.out.println(magenta + "Classes available in " + shiftName + " shift:");
-                            ta.addCell("Class No" , cellStyle);
+                            ta.addCell("Class No " , cellStyle);
                             ta.addCell("Class Name " , cellStyle);
                             for (ClassRoom cr : shift.getClassRooms()) {
                                 ta.addCell(String.valueOf(cr.getClassNo()) , cellStyle);
@@ -103,21 +118,45 @@ public class Main implements BoxBorder{
 //                                System.out.println("\t" + cr.getClassNo() + ". " + cr.getClassName());
                             }
                             System.out.println(ta.render());
-                            System.out.print("Choose a class : ");
-                            int classChoice = sc.nextInt();
-                            boolean validClassChoice = false;
+                            int classChoice;
+                            boolean validClassChoice;
+                            boolean classTaken;
                             ClassRoom classRoom = null;
-                            for (ClassRoom cr : shift.getClassRooms()) {
-                                if (cr.getClassNo() == classChoice) {
-                                    classRoom = cr;
-                                    validClassChoice = true;
-                                    break;
+                            do
+                            {
+                                validClassChoice = false;
+                                classTaken=false;
+                                System.out.print("Choose a class : ");
+                                classChoice = sc.nextInt();
+                                if(ClassRoom.isClassTaken(classChoice))
+                                {
+                                    System.out.println("Class already taken! ");
+                                    classTaken=true;
                                 }
-                            }
+                                for (ClassRoom cr : shift.getClassRooms()) {
+                                    if (cr.getClassNo() == classChoice) {
+                                        classRoom = cr;
+                                        validClassChoice = true;
+                                        break;
+                                    }
+                                }
+                            }while(classTaken);
                             if (validClassChoice) {
                                 System.out.println("Class " + classRoom.getClassName() + " selected in " + shiftName + " shift.");
-                                System.out.print("Enter subject ID : ");
-                                int subjectId = sc.nextInt();
+                                int subjectId;
+                                boolean checkSubject=true;
+                                do
+                                {
+                                    System.out.print("Enter subject ID : ");
+                                    subjectId = sc.nextInt();
+                                    for(Subject s:schedule.getSubjects())
+                                    {
+                                        if(s.getSubID()==subjectId)
+                                            checkSubject=false;
+                                    }
+                                    if(checkSubject)
+                                        System.out.println("Subject ID not found! ");
+                                }while(checkSubject);
                                 // Debug statements to check input values
                                 System.out.println("Teacher ID : " + teacherId);
                                 System.out.println("Class ID :   " + classChoice);
