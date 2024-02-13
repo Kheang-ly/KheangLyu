@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 public class ClassRoom {
     private int classNo;
     private String className;
@@ -25,23 +24,18 @@ public class ClassRoom {
     public String getClassName() {
         return className;
     }
-
     public Teacher getAssignedTeacher() {
         return assignedTeacher;
     }
-
     public void setAssignedTeacher(Teacher assignedTeacher) {
         this.assignedTeacher = assignedTeacher;
     }
-
     public Subject getAssignedSubject() {
         return assignedSubject;
     }
-
     public void setAssignedSubject(Subject assignedSubject) {
         this.assignedSubject = assignedSubject;
     }
-
     // Check if a class is available
     public static boolean isAvailableClassRoom(int classNo) {
         for (ClassRoom room : availableClasses) {

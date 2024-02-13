@@ -1,3 +1,8 @@
+import org.nocrala.tools.texttablefmt.BorderStyle;
+import org.nocrala.tools.texttablefmt.CellStyle;
+import org.nocrala.tools.texttablefmt.ShownBorders;
+import org.nocrala.tools.texttablefmt.Table;
+
 import java.util.ArrayList;
 
 public class Shift {
@@ -62,10 +67,18 @@ public class Shift {
     }
     //check in class schetdule line 6
     public static void display(Shift s) {
-        System.out.println(" Shift Name: " + s.getShiftName());
-        for (int i=0;i<s.getClassRooms().size();i++) {
-            System.out.print( " Class Available \t Class Name: "+s.getClassRooms().get(i).getClassName()+"\t");
-            System.out.println("Class No: " + s.getClassRooms().get(i).getClassNo());
+        Table taShift = new Table(2, BorderStyle.UNICODE_BOX, ShownBorders.ALL);
+        CellStyle cellStyle = new CellStyle(CellStyle.HorizontalAlign.center);
+        taShift.addCell("Class No ", cellStyle);
+        taShift.addCell("Class Name", cellStyle);
+        taShift.setColumnWidth(0, 20, 30);
+        taShift.setColumnWidth(1, 20, 30);
+        System.out.println("\u001B[32mShift Name: " + s.getShiftName() + "\u001B[0m");
+        for (int i = 0; i < s.getClassRooms().size(); i++) {
+            taShift.addCell(s.getClassRooms().get(i).getClassName(), cellStyle);
+            taShift.addCell(String.valueOf(s.getClassRooms().get(i).getClassNo()), cellStyle);
         }
+        System.out.println("\u001B[32m" + taShift.render() + "\u001B[0m");
     }
+
 }
