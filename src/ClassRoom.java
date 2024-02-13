@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 public class ClassRoom {
     private int classNo;
     private String className;
@@ -25,23 +24,18 @@ public class ClassRoom {
     public String getClassName() {
         return className;
     }
-
     public Teacher getAssignedTeacher() {
         return assignedTeacher;
     }
-
     public void setAssignedTeacher(Teacher assignedTeacher) {
         this.assignedTeacher = assignedTeacher;
     }
-
     public Subject getAssignedSubject() {
         return assignedSubject;
     }
-
     public void setAssignedSubject(Subject assignedSubject) {
         this.assignedSubject = assignedSubject;
     }
-
     // Check if a class is available
     public static boolean isAvailableClassRoom(int classNo) {
         for (ClassRoom room : availableClasses) {
@@ -50,6 +44,14 @@ public class ClassRoom {
             }
         }
         return false;
+    }
+    public static boolean isClassTaken(int classNo) {
+        for (ClassRoom room : availableClasses) {
+            if (room.getClassNo() == classNo && room.getAssignedTeacher() != null) {
+                return true; // Class is taken
+            }
+        }
+        return false; // Class is not taken
     }
 
     // Display available and unavailable classes
@@ -77,15 +79,22 @@ public class ClassRoom {
         }
     }
 
-
     // Assign teacher to class
-    public static void assignTeacherToClass(Teacher teacher, Subject subject,int classNo,String shiftname) {
+    // Assign teacher to class
+    public static void assignTeacherToClass(Teacher teacher, Subject subject, int classNo, String shiftName) {
         for (ClassRoom room : availableClasses) {
             if (room.getClassNo() == classNo) {
+                if (room.getAssignedTeacher() != null) {
+                    System.out.println("Class already has a teacher assigned ");
+                    return; // Exit the method if the class already has a teacher assigned
+                }
                 room.setAssignedTeacher(teacher);
                 room.setAssignedSubject(subject);
-                break;
+                System.out.println("Teacher assigned successfully to class " + classNo + " in " + shiftName + " shift.");
+                System.out.println("Teacher " + teacher.getName() + " added to class " + classNo + " for subject " + subject.getSubName());
+                return;
             }
         }
+        System.out.println("Class not found ");
     }
 }

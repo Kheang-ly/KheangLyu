@@ -1,5 +1,13 @@
+import org.nocrala.tools.texttablefmt.BorderStyle;
+import org.nocrala.tools.texttablefmt.CellStyle;
+import org.nocrala.tools.texttablefmt.ShownBorders;
+import org.nocrala.tools.texttablefmt.Table;
+
 import java.util.ArrayList;
 import java.util.Map;
+
+import static java.awt.Color.green;
+import static java.awt.Color.magenta;
 
 public class Schedule {
     private ArrayList<TimeSlot> timeSlots= new ArrayList<>();
@@ -45,12 +53,23 @@ public class Schedule {
     }
     public static void showAllTeacher() {
         ArrayList<Teacher> teachers = Teacher.getTeachers();
+        System.out.println("ព័ត៏មានរបស់គ្រូបង្រៀនត្រូវបានបង្ហាញខាងក្រោម");
+        Table ta = new Table(3, BorderStyle.UNICODE_BOX, ShownBorders.ALL);
+        CellStyle cellStyle = new CellStyle(CellStyle.HorizontalAlign.center);
+        ta.addCell("Teacher ID", cellStyle);
+        ta.addCell("Teacher Name", cellStyle);
+        ta.addCell("Teacher Gender", cellStyle);
+        ta.setColumnWidth(0, 20, 30);
+        ta.setColumnWidth(1, 20, 30);
+        ta.setColumnWidth(2, 20, 30);
         for (Teacher teacher : teachers) {
-            System.out.println("Teacher ID: " + teacher.getId());
-            System.out.println("Teacher Name: " + teacher.getName());
-            System.out.println("Teacher Gender: " + teacher.getGender());
-            System.out.println("-------------------------");
+            ta.addCell(teacher.getId().toString(), cellStyle);
+            ta.addCell(teacher.getName(), cellStyle);
+            ta.addCell(teacher.getGender(), cellStyle);
         }
+        String greenColorCode = "\u001B[32m";
+        String resetColorCode = "\u001B[0m";
+        System.out.println(greenColorCode + ta.render() + resetColorCode);
     }
     public void addAllocation(Teacher teacher, Subject subject, ClassRoom room, TimeSlot timeSlot) {
         // Check for conflicts before adding the allocation
@@ -58,7 +77,7 @@ public class Schedule {
             Allocation allocation = new Allocation(teacher, subject, room, timeSlot);
             timeSlot.addAllocation(allocation);
             timeSlots.add(timeSlot);
-            System.out.println("Allocation added successfully.");
+            System.out.println("សូមអរគុណ......!");
         } else {
             System.out.println("Conflict detected. Allocation cannot be added.");
         }
