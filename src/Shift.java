@@ -73,12 +73,12 @@ public class Shift {
         taShift.addCell("Class Name", cellStyle);
         taShift.setColumnWidth(0, 20, 30);
         taShift.setColumnWidth(1, 20, 30);
-        System.out.println("\u001B[32mShift Name: " + s.getShiftName() + "\u001B[0m");
+        System.out.println(s.getShiftName());
         for (int i = 0; i < s.getClassRooms().size(); i++) {
             taShift.addCell(s.getClassRooms().get(i).getClassName(), cellStyle);
             taShift.addCell(String.valueOf(s.getClassRooms().get(i).getClassNo()), cellStyle);
         }
-        System.out.println("\u001B[32m" + taShift.render() + "\u001B[0m");
+        System.out.println(taShift.render());
     }
 
 }

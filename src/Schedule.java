@@ -9,11 +9,6 @@ public class Schedule {
     private ArrayList<Subject> subjects = new ArrayList<>();
     private static ArrayList<Shift> shifts;
     private Map<ClassRoom, Allocation> classAllocations; // Assuming Allocation class exists
-
-
-
-
-
     public Allocation getAllocationByClass(ClassRoom classRoom) {
         return classAllocations.get(classRoom);
     }
@@ -62,9 +57,7 @@ public class Schedule {
             ta.addCell(teacher.getName(), cellStyle);
             ta.addCell(teacher.getGender(), cellStyle);
         }
-        String greenColorCode = "\u001B[32m";
-        String resetColorCode = "\u001B[0m";
-        System.out.println(greenColorCode + ta.render() + resetColorCode);
+        System.out.println( ta.render() );
     }
     public void addAllocation(Teacher teacher, Subject subject, ClassRoom room, TimeSlot timeSlot) {
         // Check for conflicts before adding the allocation

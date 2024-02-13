@@ -3,10 +3,8 @@ import org.nocrala.tools.texttablefmt.BorderStyle;
 import org.nocrala.tools.texttablefmt.CellStyle;
 import org.nocrala.tools.texttablefmt.ShownBorders;
 import org.nocrala.tools.texttablefmt.Table;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 public class Main implements BoxBorder{
     static Scanner sc = new Scanner(System.in);
 
@@ -23,12 +21,12 @@ public class Main implements BoxBorder{
         do {
             try {
                 System.out.println(HORIZONTAL_BORDER.repeat(60));
-                System.out.println(green + "1.ពិនិត្យមើលព័ត៏មានរបស់គ្រូបង្រៀន");
+                System.out.println("1.ពិនិត្យមើលព័ត៏មានរបស់គ្រូបង្រៀន");
                 System.out.println("2.ពិនិត្យមើលព័ត៏មានវេនសិក្សានឹងថ្នាក់សិក្សា");
                 System.out.println("3. ដាក់បញ្ចុលគ្រូទៅតាមថ្នាក់បង្រៀន");
                 System.out.println("4.ពិនិត្យមើលព័ត៏មានថ្នាក់ដែលបង្រៀនបាននឹងបង្រៀនមិនបាន");
-                System.out.println("5.ចាកចេញ");
-                System.out.print("ជ្រើសរើសជម្រើស(1-4)ខាងលើ : " + reset);
+                System.out.println("0.ចាកចេញ");
+                System.out.print("ជ្រើសរើសជម្រើស(1-4)ខាងលើ : ");
                 choosedOption = sc.nextInt();
                 System.out.println(HORIZONTAL_BORDER.repeat(60) + "\n");
                 switch (choosedOption) {
@@ -125,7 +123,7 @@ public class Main implements BoxBorder{
                                 System.out.print("សូមជ្រើសរើសថ្នាក់ដែលលោកអ្នកចង់បង្រៀន: ");
                                 classChoice = sc.nextInt();
                                 if (ClassRoom.isClassTaken(classChoice)) {
-                                    System.out.println("ថ្នាក់ដែលអ្នកបានជ្រើសរើសគឺមានគ្រូបង្រៀនរួចហោះយ");
+                                    System.out.println("ថ្នាក់ដែលអ្នកបានជ្រើសរើសគឺមានគ្រូបង្រៀនរួចហើយ");
                                     classTaken = true;
                                 }
                                 for (ClassRoom cr : shift.getClassRooms()) {
@@ -194,7 +192,6 @@ public class Main implements BoxBorder{
 
                     case 4:
                         System.out.println("ព័ត៏មានរបស់កាលវិភាគ");
-                        System.out.println("Shifts:");
                         for (Shift shift : new Shift[]{new Shift("Morning"), new Shift("Afternoon"), new Shift("Evening")}) {
                             // Shift.display(shift);
                             System.out.print("");

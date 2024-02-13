@@ -1,3 +1,7 @@
+import org.nocrala.tools.texttablefmt.BorderStyle;
+import org.nocrala.tools.texttablefmt.CellStyle;
+import org.nocrala.tools.texttablefmt.ShownBorders;
+import org.nocrala.tools.texttablefmt.Table;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -58,29 +62,48 @@ public class ClassRoom {
     public static void displayAvailableAndUnavailableClasses() {
         Set<String> printedClasses = new HashSet<>();
         Set<String> unavailableClasses = new HashSet<>();
-
-        System.out.println("Unavailable Classes:");
+        Table taClass2 = new Table(5, BorderStyle.UNICODE_BOX, ShownBorders.ALL);
+        CellStyle cellStyle2 = new CellStyle(CellStyle.HorizontalAlign.center);
+        taClass2.addCell("Class ID ", cellStyle2);
+        taClass2.addCell("Class Name", cellStyle2);
+        taClass2.addCell("Teacher ID ", cellStyle2);
+        taClass2.addCell("Teacher Name", cellStyle2);
+        taClass2.addCell("Subject Name ", cellStyle2);
+        taClass2.setColumnWidth(0, 20, 30);
+        taClass2.setColumnWidth(1, 20, 30);
+        taClass2.setColumnWidth(2, 20, 30);
+        taClass2.setColumnWidth(3, 20, 30);
+        taClass2.setColumnWidth(4, 20, 30);
+        System.out.println("កាលវិភាគដែលមាននៅក្នុង System");
         for (ClassRoom room : availableClasses) {
             if (room.getAssignedTeacher() != null) {
                 String classKey = room.getClassNo() + room.getClassName();
                 unavailableClasses.add(classKey);
-                System.out.println("Class ID: " + room.getClassNo() + ", Class Name: " + room.getClassName() +
-                        ", Assigned Teacher: " + room.getAssignedTeacher().getName() + " (ID: " + room.getAssignedTeacher().getId() +
-                        "), Assigned Subject: " + room.getAssignedSubject().getSubName() + " (ID: " + room.getAssignedSubject().getSubID() + ")");
+                taClass2.addCell(String.valueOf(room.getClassNo()), cellStyle2);
+                taClass2.addCell(room.getClassName(), cellStyle2);
+                taClass2.addCell(String.valueOf(room.getAssignedTeacher().getId()), cellStyle2);
+                taClass2.addCell(room.getAssignedTeacher().getName(), cellStyle2);
+                taClass2.addCell(room.getAssignedSubject().getSubName(), cellStyle2);
             }
         }
-        System.out.println("Available Classes:");
+        System.out.println(taClass2.render());
+        Table taClass = new Table(2, BorderStyle.UNICODE_BOX, ShownBorders.ALL);
+        CellStyle cellStyle = new CellStyle(CellStyle.HorizontalAlign.center);
+        taClass.addCell("Class No ", cellStyle);
+        taClass.addCell("Class Name", cellStyle);
+        taClass.setColumnWidth(0, 20, 30);
+        taClass.setColumnWidth(1, 20, 30);
+        System.out.println("ថ្នាក់ដែលនៅសល់អាចដាក់គ្រូបង្តៀនបានបានបង្ហាញនៅខាងក្រោម..!:");
         for (ClassRoom room : availableClasses) {
             String classKey = room.getClassNo() + room.getClassName();
             if (room.getAssignedTeacher() == null && !unavailableClasses.contains(classKey) && !printedClasses.contains(classKey)) {
-                System.out.println("Class ID: " + room.getClassNo() + ", Class Name: " + room.getClassName());
+                taClass.addCell(String.valueOf(room.getClassNo()));
+                taClass.addCell(room.getClassName());
                 printedClasses.add(classKey);
             }
         }
+        System.out.println(taClass.render());
     }
-
-    // Assign teacher to class
-    // Assign teacher to class
     public static void assignTeacherToClass(Teacher teacher, Subject subject, int classNo, String shiftName) {
         for (ClassRoom room : availableClasses) {
             if (room.getClassNo() == classNo) {
