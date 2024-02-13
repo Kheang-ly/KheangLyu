@@ -1,61 +1,90 @@
 import java.util.ArrayList;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class ClassRoom {
-
     private int classNo;
     private String className;
-    private static ArrayList<ClassRoom> classes=new ArrayList<>();
+    private Teacher assignedTeacher;
+    private Subject assignedSubject;
+    private static final List<ClassRoom> availableClasses = new ArrayList<>();
 
-    public ClassRoom() {
-    }
-
-    public ClassRoom(int classNo, String className ) {
+    // Constructor
+    public ClassRoom(int classNo, String className) {
         this.classNo = classNo;
         this.className = className;
-        classes.add(this);
+        availableClasses.add(this);
     }
 
+    // Getters and setters
     public int getClassNo() {
         return classNo;
-    }
-
-    public void setClassNo(int classNo) {
-        this.classNo = classNo;
     }
 
     public String getClassName() {
         return className;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public Teacher getAssignedTeacher() {
+        return assignedTeacher;
     }
 
-
-    public static ArrayList<ClassRoom> getClasses() {
-        return classes;
+    public void setAssignedTeacher(Teacher assignedTeacher) {
+        this.assignedTeacher = assignedTeacher;
     }
 
-    public static void setClasses(ArrayList<ClassRoom> classes) {
-        ClassRoom.classes = classes;
+    public Subject getAssignedSubject() {
+        return assignedSubject;
     }
 
-    public static boolean isAvailableClassRoom (ClassRoom classRoom , int id ){
-        if(Objects.equals(classRoom.classNo,id)){
-            return true;
+    public void setAssignedSubject(Subject assignedSubject) {
+        this.assignedSubject = assignedSubject;
+    }
+
+    // Check if a class is available
+    public static boolean isAvailableClassRoom(int classNo) {
+        for (ClassRoom room : availableClasses) {
+            if (room.getClassNo() == classNo) {
+                return true;
+            }
         }
         return false;
     }
 
+    // Display available and unavailable classes
+    public static void displayAvailableAndUnavailableClasses() {
+        Set<String> printedClasses = new HashSet<>();
+        Set<String> unavailableClasses = new HashSet<>();
 
-    public static void checkClassRoom ( int id ){
-        for(int i=0;i<classes.size();i++)
-        {
-            if(isAvailableClassRoom(classes.get(i),id ))
-            {
-                System.out.println(" Class ID: ".concat(classes.get(i).classNo+"  "));
-                System.out.println(" Class Name: ".concat(classes.get(i).className));
+        System.out.println("Unavailable Classes:");
+        for (ClassRoom room : availableClasses) {
+            if (room.getAssignedTeacher() != null) {
+                String classKey = room.getClassNo() + room.getClassName();
+                unavailableClasses.add(classKey);
+                System.out.println("Class ID: " + room.getClassNo() + ", Class Name: " + room.getClassName() +
+                        ", Assigned Teacher: " + room.getAssignedTeacher().getName() + " (ID: " + room.getAssignedTeacher().getId() +
+                        "), Assigned Subject: " + room.getAssignedSubject().getSubName() + " (ID: " + room.getAssignedSubject().getSubID() + ")");
+            }
+        }
+        System.out.println("Available Classes:");
+        for (ClassRoom room : availableClasses) {
+            String classKey = room.getClassNo() + room.getClassName();
+            if (room.getAssignedTeacher() == null && !unavailableClasses.contains(classKey) && !printedClasses.contains(classKey)) {
+                System.out.println("Class ID: " + room.getClassNo() + ", Class Name: " + room.getClassName());
+                printedClasses.add(classKey);
+            }
+        }
+    }
+
+
+    // Assign teacher to class
+    public static void assignTeacherToClass(Teacher teacher, Subject subject,int classNo,String shiftname) {
+        for (ClassRoom room : availableClasses) {
+            if (room.getClassNo() == classNo) {
+                room.setAssignedTeacher(teacher);
+                room.setAssignedSubject(subject);
+                break;
             }
         }
     }
