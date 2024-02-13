@@ -2,13 +2,8 @@ import org.nocrala.tools.texttablefmt.BorderStyle;
 import org.nocrala.tools.texttablefmt.CellStyle;
 import org.nocrala.tools.texttablefmt.ShownBorders;
 import org.nocrala.tools.texttablefmt.Table;
-
 import java.util.ArrayList;
 import java.util.Map;
-
-import static java.awt.Color.green;
-import static java.awt.Color.magenta;
-
 public class Schedule {
     private ArrayList<TimeSlot> timeSlots= new ArrayList<>();
     private ArrayList<Subject> subjects = new ArrayList<>();
