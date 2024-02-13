@@ -64,21 +64,20 @@ public class ClassRoom {
             if (room.getAssignedTeacher() != null) {
                 String classKey = room.getClassNo() + room.getClassName();
                 unavailableClasses.add(classKey);
-                System.out.println("Class ID: " + room.getClassNo() + ", Class Name: " + room.getClassName() +
-                        ", Assigned Teacher: " + room.getAssignedTeacher().getName() + " (ID: " + room.getAssignedTeacher().getId() +
-                        "), Assigned Subject: " + room.getAssignedSubject().getSubName() + " (ID: " + room.getAssignedSubject().getSubID() + ")");
+                System.out.println("Class ID: " .concat(room.getClassNo()+"")  .concat(", Class Name: ")  .concat(room.getClassName())
+                        .concat(", Assigned Teacher: ") .concat(room.getAssignedTeacher().getName())  .concat(" (ID: ")  .concat(room.getAssignedTeacher().getId()+"")
+                        .concat("), Assigned Subject: ") .concat(room.getAssignedSubject().getSubName())  .concat(" (ID: ")  .concat(room.getAssignedSubject().getSubID()+"")  .concat(")") );
             }
         }
         System.out.println("Available Classes:");
         for (ClassRoom room : availableClasses) {
             String classKey = room.getClassNo() + room.getClassName();
             if (room.getAssignedTeacher() == null && !unavailableClasses.contains(classKey) && !printedClasses.contains(classKey)) {
-                System.out.println("Class ID: " + room.getClassNo() + ", Class Name: " + room.getClassName());
+                System.out.println("Class ID: " .concat(room.getClassNo()+"")  .concat(", Class Name: ")  .concat (room.getClassName()));
                 printedClasses.add(classKey);
             }
         }
     }
-
     // Assign teacher to class
     // Assign teacher to class
     public static void assignTeacherToClass(Teacher teacher, Subject subject, int classNo, String shiftName) {
@@ -90,8 +89,8 @@ public class ClassRoom {
                 }
                 room.setAssignedTeacher(teacher);
                 room.setAssignedSubject(subject);
-                System.out.println("Teacher assigned successfully to class " + classNo + " in " + shiftName + " shift.");
-                System.out.println("Teacher " + teacher.getName() + " added to class " + classNo + " for subject " + subject.getSubName());
+                System.out.println("ពួកយើងបានបញ្ចូលគ្រូបង្រៀនចូលទៅថ្នាក់  " .concat(classNo+"")  .concat(" នៅក្នុងវេន( ")  .concat(shiftName)  .concat(" ) បានជោគជ័យ ។") );
+                System.out.println("លោកគ្រូ/អ្នកគ្រូឈ្មោះ : ".concat(teacher.getName())  .concat(" បានបញ្ចូលទៅក្នុងថ្នាក់  ")  .concat(room.className)  .concat(" មុខវិជ្ជា ")  .concat(subject.getSubName()) );
                 return;
             }
         }
